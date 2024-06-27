@@ -1,12 +1,29 @@
+// slide animations
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+      console.log(entry)
+      if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+      }
+  });
+});
+
+const hiddenElements = document.querySelectorAll('.hidden');
+const hiddenElements1 = document.querySelectorAll('.hidden1');
+
+hiddenElements.forEach((el) => observer.observe(el));
+hiddenElements1.forEach((el) => observer.observe(el));
+
+
+
 let slideIndex = 1;
 showSlides(slideIndex);
 
-// Next/previous controls
 function plusSlides(n) {
   showSlides(slideIndex += n);
 }
 
-// Thumbnail image controls
 function currentSlide(n) {
   showSlides(slideIndex = n);
 }
@@ -26,3 +43,4 @@ function showSlides(n) {
   slides[slideIndex - 1].style.display = "block";
   dots[slideIndex - 1].className += " active";
 }
+
